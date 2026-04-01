@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #FAFAF8;
+    color: #1A1A18;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── Page ── */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  /* ── Cover ── */
+  .cover {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 48px;
+    background: #1C1916;
+    border-radius: 20px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: #E8521A;
+    border-radius: 50%;
+    opacity: 0.12;
+  }
+  .cover-text { position: relative; z-index: 1; }
+  .cover-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #B8976A;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .cover-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    color: #F5F0E8;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .cover-sub {
+    font-size: 14px;
+    color: #8A8070;
+  }
+
+  /* Logo cover */
+  .logo-cover {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative; z-index: 1;
+  }
+  .logo-cover-icon {
+    width: 72px;
+    height: 72px;
+  }
+  .logo-cover-wordmark {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: #F5F0E8;
+    line-height: 1.1;
+  }
+  .logo-cover-wordmark span {
+    display: block;
+    font-size: 13px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #E8521A;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* ── Section ── */
+  .section { margin-bottom: 52px; }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #B8976A;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    margin-bottom: 24px;
+    color: #1A1A18;
+    border-bottom: 1.5px solid #E8D8C4;
+    padding-bottom: 12px;
+  }
+
+  /* ── Logo Section ── */
+  .logo-variants {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .logo-card {
+    border-radius: 14px;
+    padding: 32px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #E8D8C4;
+  }
+  .logo-card.dark { background: #1C1916; border-color: #1C1916; }
+  .logo-card.light { background: #F5F0E8; }
+  .logo-card.color-bg { background: #E8521A; border-color: #E8521A; }
+  .logo-card-label {
+    font-size: 11px;
+    color: #9A8A7A;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .logo-card.dark .logo-card-label { color: #6A5A4A; }
+  .logo-card.color-bg .logo-card-label { color: rgba(255,255,255,0.6); }
+
+  /* The actual logo */
+  .logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-word {
+    font-family: 'DM Serif Display', serif;
+    line-height: 1;
+  }
+  .logo-word .multi { display: block; }
+  .logo-word .resto { display: block; }
+
+  /* ── Colors ── */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .color-swatch {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .swatch-block {
+    height: 72px;
+  }
+  .swatch-info {
+    padding: 10px 12px;
+    background: #fff;
+  }
+  .swatch-name {
+    font-weight: 600;
+    font-size: 12px;
+    margin-bottom: 2px;
+    color: #1A1A18;
+  }
+  .swatch-hex {
+    font-size: 11px;
+    color: #8A8070;
+    font-family: monospace;
+  }
+  .swatch-role {
+    font-size: 10px;
+    color: #B8A898;
+    margin-top: 2px;
+  }
+
+  .color-secondary-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+  }
+  .color-swatch-sm {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .swatch-block-sm { height: 48px; }
+  .swatch-info-sm {
+    padding: 8px 10px;
+    background: #fff;
+  }
+  .swatch-name-sm { font-weight: 600; font-size: 11px; color: #1A1A18; }
+  .swatch-hex-sm { font-size: 10px; color: #8A8070; font-family: monospace; }
+
+  /* ── Typography ── */
+  .type-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .type-card {
+    background: #fff;
+    border: 1px solid #E8D8C4;
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .type-family-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #B8976A;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .type-display {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    color: #1A1A18;
+  }
+  .type-display em { color: #E8521A; font-style: italic; }
+  .type-body-demo {
+    font-size: 13px;
+    color: #5A5048;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .type-scale {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .type-scale-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .type-scale-name { font-size: 10px; color: #B8A898; width: 60px; flex-shrink: 0; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .ts-h1 { font-family: 'DM Serif Display', serif; font-size: 28px; color: #1A1A18; line-height: 1; }
+  .ts-h2 { font-family: 'DM Serif Display', serif; font-size: 22px; color: #1A1A18; line-height: 1; }
+  .ts-h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 16px; color: #1A1A18; }
+  .ts-body { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: #5A5048; }
+  .ts-small { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; color: #8A8070; }
+  .ts-label { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #B8976A; }
+
+  /* ── Logo anatomy ── */
+  .anatomy-box {
+    background: #fff;
+    border: 1px solid #E8D8C4;
+    border-radius: 16px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+  .anatomy-main {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .anatomy-labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+  }
+  .anatomy-item {
+    text-align: center;
+    padding: 16px;
+    background: #FAFAF8;
+    border-radius: 10px;
+    border: 1px dashed #D8C8B4;
+  }
+  .anatomy-item-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: #B8976A; font-weight: 700; margin-bottom: 6px; }
+  .anatomy-item-value { font-size: 12px; color: #5A5048; }
+
+  /* ── Usage examples ── */
+  .usage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .usage-card {
+    background: #fff;
+    border: 1px solid #E8D8C4;
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .usage-card-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #B8976A;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  /* Spacing tokens */
+  .spacing-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .spacing-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .spacing-block { background: #E8521A; opacity: 0.7; border-radius: 3px; width: 20px; }
+  .spacing-label { font-size: 10px; color: #8A8070; text-align: center; font-family: monospace; }
+
+  /* Border radius */
+  .radius-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .radius-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .radius-block { width: 56px; height: 56px; background: #F5F0E8; border: 2px solid #D8B896; }
+  .radius-label { font-size: 10px; color: #8A8070; font-family: monospace; text-align: center; }
+
+  /* Shadows */
+  .shadow-row { display: flex; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+  .shadow-item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .shadow-block { width: 64px; height: 40px; background: #fff; border-radius: 8px; }
+  .shadow-label { font-size: 10px; color: #8A8070; text-align: center; }
+
+  /* CTA example */
+  .btn-primary-ex {
+    display: inline-block;
+    padding: 11px 24px;
+    background: #E8521A;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  .btn-secondary-ex {
+    display: inline-block;
+    padding: 10px 24px;
+    background: transparent;
+    color: #E8521A;
+    border: 1.5px solid #E8521A;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  /* Tag */
+  .tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .tag-spicy { background: #FDECE5; color: #C23A0C; }
+  .tag-new { background: #E8F7EE; color: #1A7A3C; }
+  .tag-promo { background: #FFF4E0; color: #A05A00; }
+
+  /* Mini restaurant card */
+  .resto-card {
+    background: #fff;
+    border: 1px solid #E8D8C4;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .resto-card-img {
+    height: 72px;
+    background: linear-gradient(135deg, #E8521A 0%, #C23A0C 50%, #1C1916 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: rgba(255,255,255,0.3);
+  }
+  .resto-card-body { padding: 12px; }
+  .resto-card-name { font-weight: 700; font-size: 13px; margin-bottom: 2px; color: #1A1A18; }
+  .resto-card-meta { font-size: 11px; color: #8A8070; }
+
+  /* Divider */
+  .divider { height: 1px; background: #E8D8C4; margin: 16px 0; }
+
+  /* Clearzone annotation */
+  .clearzone-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    padding: 24px;
+    background: #FAFAF8;
+    border-radius: 12px;
+    border: 1px dashed #D8C8B4;
+  }
+  .clearzone-logo {
+    outline: 1px dashed #E8521A;
+    outline-offset: 16px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-text">
+      <div class="cover-label">Charte graphique · Version 1.0</div>
+      <div class="cover-title">Multi Resto</div>
+      <div class="cover-sub">Guide de marque officiel</div>
+    </div>
+    <div class="logo-cover">
+      <svg class="logo-cover-icon" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Assiette / plat stylisé -->
+        <circle cx="36" cy="36" r="30" fill="#E8521A" opacity="0.15"/>
+        <circle cx="36" cy="36" r="22" fill="none" stroke="#E8521A" stroke-width="2.5"/>
+        <!-- Fourchette stylisée -->
+        <line x1="28" y1="22" x2="28" y2="50" stroke="#F5F0E8" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="25" y1="22" x2="25" y2="30" stroke="#F5F0E8" stroke-width="2" stroke-linecap="round"/>
+        <line x1="31" y1="22" x2="31" y2="30" stroke="#F5F0E8" stroke-width="2" stroke-linecap="round"/>
+        <path d="M25 30 Q28 34 31 30" fill="none" stroke="#F5F0E8" stroke-width="2" stroke-linecap="round"/>
+        <!-- Couteau stylisé -->
+        <path d="M44 22 L44 32 Q48 35 44 38 L44 50" stroke="#F5F0E8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <!-- Point central -->
+        <circle cx="36" cy="36" r="3" fill="#E8521A"/>
+      </svg>
+      <div class="logo-cover-wordmark">
+        Multi Resto
+        <span>Charte graphique</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. LOGO -->
+  <div class="section">
+    <div class="section-label">01</div>
+    <div class="section-title">Logo</div>
+
+    <div class="anatomy-box" style="margin-bottom: 20px;">
+      <div class="anatomy-main">
+        <!-- Logo principal grande taille -->
+        <svg width="56" height="56" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="36" cy="36" r="30" fill="#E8521A" opacity="0.12"/>
+          <circle cx="36" cy="36" r="22" fill="none" stroke="#E8521A" stroke-width="2.5"/>
+          <line x1="28" y1="22" x2="28" y2="50" stroke="#1C1916" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="25" y1="22" x2="25" y2="30" stroke="#1C1916" stroke-width="2" stroke-linecap="round"/>
+          <line x1="31" y1="22" x2="31" y2="30" stroke="#1C1916" stroke-width="2" stroke-linecap="round"/>
+          <path d="M25 30 Q28 34 31 30" fill="none" stroke="#1C1916" stroke-width="2" stroke-linecap="round"/>
+          <path d="M44 22 L44 32 Q48 35 44 38 L44 50" stroke="#1C1916" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="36" cy="36" r="3" fill="#E8521A"/>
+        </svg>
+        <div>
+          <div style="font-family: 'DM Serif Display', serif; font-size: 32px; line-height: 1; color: #1A1A18;">Multi Resto</div>
+          <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #E8521A; margin-top: 3px;">Commandez partout</div>
+        </div>
+      </div>
+      <div class="anatomy-labels">
+        <div class="anatomy-item">
+          <div class="anatomy-item-label">Icône</div>
+          <div class="anatomy-item-value">Assiette + couverts<br>stylisés en cercle</div>
+        </div>
+        <div class="anatomy-item">
+          <div class="anatomy-item-label">Logotype</div>
+          <div class="anatomy-item-value">DM Serif Display<br>Regular 32px</div>
+        </div>
+        <div class="anatomy-item">
+          <div class="anatomy-item-label">Tagline</div>
+          <div class="anatomy-item-value">Plus Jakarta Sans<br>Bold 11px / caps</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="logo-variants">
+      <!-- Fond clair -->
+      <div class="logo-card light">
+        <svg width="44" height="44" viewBox="0 0 72 72" fill="none">
+          <circle cx="36" cy="36" r="30" fill="#E8521A" opacity="0.12"/>
+          <circle cx="36" cy="36" r="22" fill="none" stroke="#E8521A" stroke-width="2.5"/>
+          <line x1="28" y1="22" x2="28" y2="50" stroke="#1C1916" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="25" y1="22" x2="25" y2="30" stroke="#1C1916" stroke-width="2" stroke-linecap="round"/>
+          <line x1="31" y1="22" x2="31" y2="30" stroke="#1C1916" stroke-width="2" stroke-linecap="round"/>
+          <path d="M25 30 Q28 34 31 30" fill="none" stroke="#1C1916" stroke-width="2" stroke-linecap="round"/>
+          <path d="M44 22 L44 32 Q48 35 44 38 L44 50" stroke="#1C1916" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="36" cy="36" r="3" fill="#E8521A"/>
+        </svg>
+        <div style="font-family:'DM Serif Display',serif;font-size:18px;color:#1A1A18;">Multi Resto</div>
+        <div class="logo-card-label">Fond clair</div>
+      </div>
+      <!-- Fond sombre -->
+      <div class="logo-card dark">
+        <svg width="44" height="44" viewBox="0 0 72 72" fill="none">
+          <circle cx="36" cy="36" r="30" fill="#E8521A" opacity="0.18"/>
+          <circle cx="36" cy="36" r="22" fill="none" stroke="#E8521A" stroke-width="2.5"/>
+          <line x1="28" y1="22" x2="28" y2="50" stroke="#F5F0E8" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="25" y1="22" x2="25" y2="30" stroke="#F5F0E8" stroke-width="2" stroke-linecap="round"/>
+          <line x1="31" y1="22" x2="31" y2="30" stroke="#F5F0E8" stroke-width="2" stroke-linecap="round"/>
+          <path d="M25 30 Q28 34 31 30" fill="none" stroke="#F5F0E8" stroke-width="2" stroke-linecap="round"/>
+          <path d="M44 22 L44 32 Q48 35 44 38 L44 50" stroke="#F5F0E8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="36" cy="36" r="3" fill="#E8521A"/>
+        </svg>
+        <div style="font-family:'DM Serif Display',serif;font-size:18px;color:#F5F0E8;">Multi Resto</div>
+        <div class="logo-card-label">Fond sombre</div>
+      </div>
+      <!-- Fond couleur -->
+      <div class="logo-card color-bg">
+        <svg width="44" height="44" viewBox="0 0 72 72" fill="none">
+          <circle cx="36" cy="36" r="30" fill="rgba(255,255,255,0.15)"/>
+          <circle cx="36" cy="36" r="22" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2.5"/>
+          <line x1="28" y1="22" x2="28" y2="50" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="25" y1="22" x2="25" y2="30" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          <line x1="31" y1="22" x2="31" y2="30" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          <path d="M25 30 Q28 34 31 30" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          <path d="M44 22 L44 32 Q48 35 44 38 L44 50" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="36" cy="36" r="3" fill="#fff"/>
+        </svg>
+        <div style="font-family:'DM Serif Display',serif;font-size:18px;color:#fff;">Multi Resto</div>
+        <div class="logo-card-label">Fond couleur</div>
+      </div>
+    </div>
+
+    <!-- Zone de protection -->
+    <div style="margin-top:20px; padding:20px; background:#fff; border:1px solid #E8D8C4; border-radius:14px;">
+      <div class="usage-card-label">Zone de protection</div>
+      <div style="display:flex; align-items:center; gap:24px;">
+        <div class="clearzone-wrap">
+          <div class="clearzone-logo">
+            <svg width="36" height="36" viewBox="0 0 72 72" fill="none">
+              <circle cx="36" cy="36" r="22" fill="none" stroke="#E8521A" stroke-width="2.5"/>
+              <line x1="28" y1="22" x2="28" y2="50" stroke="#1C1916" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="25" y1="22" x2="25" y2="30" stroke="#1C1916" stroke-width="2" stroke-linecap="round"/>
+              <line x1="31" y1="22" x2="31" y2="30" stroke="#1C1916" stroke-width="2" stroke-linecap="round"/>
+              <path d="M25 30 Q28 34 31 30" fill="none" stroke="#1C1916" stroke-width="2" stroke-linecap="round"/>
+              <path d="M44 22 L44 32 Q48 35 44 38 L44 50" stroke="#1C1916" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <circle cx="36" cy="36" r="3" fill="#E8521A"/>
+            </svg>
+          </div>
+        </div>
+        <div style="font-size:12px; color:#5A5048; line-height:1.8;">
+          Toujours laisser un espace libre <strong>= hauteur du X du logo</strong><br>
+          autour du logo (zone orange en pointillés).<br>
+          Aucun autre élément ne doit empiéter.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. COULEURS -->
+  <div class="section">
+    <div class="section-label">02</div>
+    <div class="section-title">Palette de couleurs</div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#B8976A;margin-bottom:12px;">Couleurs primaires</div>
+    <div class="color-grid" style="margin-bottom:24px;">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#E8521A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Braise</div>
+          <div class="swatch-hex">#E8521A</div>
+          <div class="swatch-role">Primaire · CTA</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#C23A0C;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Braise foncé</div>
+          <div class="swatch-hex">#C23A0C</div>
+          <div class="swatch-role">Hover · Accent fort</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#F5A05A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Safran</div>
+          <div class="swatch-hex">#F5A05A</div>
+          <div class="swatch-role">Secondaire</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#1C1916;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Charbon</div>
+          <div class="swatch-hex">#1C1916</div>
+          <div class="swatch-role">Texte principal</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#F5F0E8;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Crème</div>
+          <div class="swatch-hex">#F5F0E8</div>
+          <div class="swatch-role">Fond · Surfaces</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#B8976A;margin-bottom:12px;">Couleurs d'état</div>
+    <div class="color-secondary-row">
+      <div class="color-swatch-sm">
+        <div class="swatch-block-sm" style="background:#1E8C4A;"></div>
+        <div class="swatch-info-sm">
+          <div class="swatch-name-sm">Succès</div>
+          <div class="swatch-hex-sm">#1E8C4A</div>
+        </div>
+      </div>
+      <div class="color-swatch-sm">
+        <div class="swatch-block-sm" style="background:#DC2626;"></div>
+        <div class="swatch-info-sm">
+          <div class="swatch-name-sm">Danger</div>
+          <div class="swatch-hex-sm">#DC2626</div>
+        </div>
+      </div>
+      <div class="color-swatch-sm">
+        <div class="swatch-block-sm" style="background:#D97706;"></div>
+        <div class="swatch-info-sm">
+          <div class="swatch-name-sm">Attention</div>
+          <div class="swatch-hex-sm">#D97706</div>
+        </div>
+      </div>
+      <div class="color-swatch-sm">
+        <div class="swatch-block-sm" style="background:#FAFAF8;"></div>
+        <div class="swatch-info-sm" style="border-top:1px solid #eee;">
+          <div class="swatch-name-sm">Background</div>
+          <div class="swatch-hex-sm">#FAFAF8</div>
+        </div>
+      </div>
+      <div class="color-swatch-sm">
+        <div class="swatch-block-sm" style="background:#FFFFFF; border-bottom:1px solid #f0e8dc;"></div>
+        <div class="swatch-info-sm">
+          <div class="swatch-name-sm">Surface</div>
+          <div class="swatch-hex-sm">#FFFFFF</div>
+        </div>
+      </div>
+      <div class="color-swatch-sm">
+        <div class="swatch-block-sm" style="background:#E8D8C4;"></div>
+        <div class="swatch-info-sm">
+          <div class="swatch-name-sm">Bordure</div>
+          <div class="swatch-hex-sm">#E8D8C4</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. TYPOGRAPHIE -->
+  <div class="section">
+    <div class="section-label">03</div>
+    <div class="section-title">Typographie</div>
+
+    <div class="type-showcase">
+      <div class="type-card">
+        <div class="type-family-label">Police d'affichage</div>
+        <div class="type-display">Saveurs <em>du monde</em></div>
+        <div style="font-size:12px;color:#8A8070;margin-bottom:8px;font-style:italic;">DM Serif Display — Titres, logo, hero sections</div>
+        <div style="font-size:11px;color:#B8A898;">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 &amp; @ # % €</div>
+      </div>
+      <div class="type-card">
+        <div class="type-family-label">Police de corps</div>
+        <div style="font-size:22px;font-weight:700;margin-bottom:8px;color:#1A1A18;">Plus Jakarta Sans</div>
+        <div class="type-body-demo">Commandez facilement parmi des dizaines de restaurants locaux. Livraison rapide, paiement sécurisé.</div>
+        <div style="font-size:11px;color:#B8A898;">Corps de texte, UI, boutons, labels, navigation</div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px; background:#fff; border:1px solid #E8D8C4; border-radius:14px; padding:24px;">
+      <div class="usage-card-label" style="margin-bottom:16px;">Échelle typographique</div>
+      <div class="type-scale">
+        <div class="type-scale-row"><span class="type-scale-name">H1</span><span class="ts-h1">Découvrez nos restaurants</span></div>
+        <div class="divider"></div>
+        <div class="type-scale-row"><span class="type-scale-name">H2</span><span class="ts-h2">Menus du jour</span></div>
+        <div class="divider"></div>
+        <div class="type-scale-row"><span class="type-scale-name">H3</span><span class="ts-h3">Catégories populaires</span></div>
+        <div class="divider"></div>
+        <div class="type-scale-row"><span class="type-scale-name">Body</span><span class="ts-body">Livraison en 30 minutes · Commande minimum 8 000 FCFA</span></div>
+        <div class="divider"></div>
+        <div class="type-scale-row"><span class="type-scale-name">Small</span><span class="ts-small">* Frais de livraison offerts dès 15 000 FCFA d'achat</span></div>
+        <div class="divider"></div>
+        <div class="type-scale-row"><span class="type-scale-name">Label</span><span class="ts-label">Nouveau restaurant</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. COMPOSANTS UI -->
+  <div class="section">
+    <div class="section-label">04</div>
+    <div class="section-title">Composants UI</div>
+
+    <div class="usage-grid">
+      <!-- Boutons -->
+      <div class="usage-card">
+        <div class="usage-card-label">Boutons</div>
+        <div style="margin-bottom:12px;">
+          <span class="btn-primary-ex">Commander</span>
+          <span class="btn-secondary-ex">Voir la carte</span>
+        </div>
+        <div style="font-size:11px;color:#8A8070;line-height:1.7;">
+          <strong>Primaire :</strong> bg Braise #E8521A, blanc, bold 14px<br>
+          <strong>Hover :</strong> bg Braise foncé #C23A0C<br>
+          <strong>Secondaire :</strong> border + texte Braise<br>
+          <strong>Border-radius :</strong> 8px
+        </div>
+      </div>
+
+      <!-- Tags / Badges -->
+      <div class="usage-card">
+        <div class="usage-card-label">Tags &amp; Badges</div>
+        <div style="margin-bottom:12px;">
+          <span class="tag tag-spicy">Épicé</span>
+          <span class="tag tag-new">Nouveau</span>
+          <span class="tag tag-promo">Promo</span>
+        </div>
+        <div style="font-size:11px;color:#8A8070;line-height:1.7;">
+          Fond teinté + texte foncé de la même teinte<br>
+          Font-size 11px · Font-weight 600<br>
+          Border-radius 20px (pill)
+        </div>
+      </div>
+
+      <!-- Carte restaurant -->
+      <div class="usage-card">
+        <div class="usage-card-label">Carte restaurant</div>
+        <div class="resto-card">
+          <div class="resto-card-img">Bg photo</div>
+          <div class="resto-card-body">
+            <div class="resto-card-name">Le Thiéboudienne</div>
+            <div class="resto-card-meta">Cuisine sénégalaise · 4.8 ★ · 25 min</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inputs -->
+      <div class="usage-card">
+        <div class="usage-card-label">Champs de formulaire</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="border:1.5px solid #E8D8C4;border-radius:8px;padding:10px 12px;font-size:13px;color:#1A1A18;background:#fff;">Adresse de livraison</div>
+          <div style="border:1.5px solid #E8521A;border-radius:8px;padding:10px 12px;font-size:13px;color:#1A1A18;background:#fff;">Dakar, Plateau</div>
+          <div style="border:1.5px solid #DC2626;border-radius:8px;padding:10px 12px;font-size:13px;color:#DC2626;background:#fff;">Champ requis</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. TOKENS DE DESIGN -->
+  <div class="section">
+    <div class="section-label">05</div>
+    <div class="section-title">Tokens de design</div>
+
+    <div class="usage-grid">
+      <div class="usage-card">
+        <div class="usage-card-label">Espacements</div>
+        <div class="spacing-row">
+          <div class="spacing-item"><div class="spacing-block" style="height:4px;"></div><div class="spacing-label">4px<br>xs</div></div>
+          <div class="spacing-item"><div class="spacing-block" style="height:8px;"></div><div class="spacing-label">8px<br>sm</div></div>
+          <div class="spacing-item"><div class="spacing-block" style="height:12px;"></div><div class="spacing-label">12px<br>md</div></div>
+          <div class="spacing-item"><div class="spacing-block" style="height:16px;"></div><div class="spacing-label">16px<br>lg</div></div>
+          <div class="spacing-item"><div class="spacing-block" style="height:24px;"></div><div class="spacing-label">24px<br>xl</div></div>
+          <div class="spacing-item"><div class="spacing-block" style="height:32px;"></div><div class="spacing-label">32px<br>2xl</div></div>
+          <div class="spacing-item"><div class="spacing-block" style="height:48px;"></div><div class="spacing-label">48px<br>3xl</div></div>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-card-label">Arrondis (border-radius)</div>
+        <div class="radius-row">
+          <div class="radius-item"><div class="radius-block" style="border-radius:4px;"></div><div class="radius-label">4px<br>sm</div></div>
+          <div class="radius-item"><div class="radius-block" style="border-radius:8px;"></div><div class="radius-label">8px<br>md</div></div>
+          <div class="radius-item"><div class="radius-block" style="border-radius:12px;"></div><div class="radius-label">12px<br>lg</div></div>
+          <div class="radius-item"><div class="radius-block" style="border-radius:20px;"></div><div class="radius-label">20px<br>xl</div></div>
+          <div class="radius-item"><div class="radius-block" style="border-radius:28px;"></div><div class="radius-label">50%<br>pill</div></div>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-card-label">Ombres</div>
+        <div class="shadow-row">
+          <div class="shadow-item">
+            <div class="shadow-block" style="box-shadow:0 1px 2px rgba(0,0,0,0.06);border:1px solid #E8D8C4;"></div>
+            <div class="shadow-label">sm<br>0 1px 2px</div>
+          </div>
+          <div class="shadow-item">
+            <div class="shadow-block" style="box-shadow:0 4px 12px rgba(0,0,0,0.08);"></div>
+            <div class="shadow-label">md<br>0 4px 12px</div>
+          </div>
+          <div class="shadow-item">
+            <div class="shadow-block" style="box-shadow:0 8px 24px rgba(0,0,0,0.1);"></div>
+            <div class="shadow-label">lg<br>0 8px 24px</div>
+          </div>
+          <div class="shadow-item">
+            <div class="shadow-block" style="box-shadow:0 16px 40px rgba(0,0,0,0.12);"></div>
+            <div class="shadow-label">xl<br>0 16px 40px</div>
+          </div>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-card-label">Icônes</div>
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+          <div style="text-align:center;">
+            <div style="font-size:24px;margin-bottom:4px;">🍽</div>
+            <div style="font-size:10px;color:#8A8070;">24px<br>Navigation</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:20px;margin-bottom:4px;">🛵</div>
+            <div style="font-size:10px;color:#8A8070;">20px<br>Inline</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:16px;margin-bottom:4px;">⭐</div>
+            <div style="font-size:10px;color:#8A8070;">16px<br>Compact</div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:#8A8070;margin-top:12px;line-height:1.7;">
+          Bibliothèque recommandée : <strong>Phosphor Icons</strong><br>
+          Style : Regular (outline) principalement
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. TON DE LA MARQUE -->
+  <div class="section">
+    <div class="section-label">06</div>
+    <div class="section-title">Ton de la marque</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="background:#fff;border:1px solid #E8D8C4;border-radius:14px;padding:24px;">
+        <div class="usage-card-label" style="color:#1E8C4A;margin-bottom:12px;">✓ On dit</div>
+        <ul style="list-style:none;padding:0;font-size:13px;color:#3A3028;line-height:2;">
+          <li>— "Commandez en quelques clics"</li>
+          <li>— "Vos restaurants préférés, livrés"</li>
+          <li>— "Simple. Rapide. Savoureux."</li>
+          <li>— "Choisissez parmi X restaurants"</li>
+        </ul>
+      </div>
+      <div style="background:#fff;border:1px solid #E8D8C4;border-radius:14px;padding:24px;">
+        <div class="usage-card-label" style="color:#DC2626;margin-bottom:12px;">✕ On évite</div>
+        <ul style="list-style:none;padding:0;font-size:13px;color:#3A3028;line-height:2;">
+          <li>— Jargon technique ou formel</li>
+          <li>— Tournures trop commerciales</li>
+          <li>— Ponctuation excessive !!!</li>
+          <li>— Faux anglicismes inutiles</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
